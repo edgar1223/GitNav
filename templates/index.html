@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Archivos Modificados</h2>
+        <ul class="list-group">
+            {% for file in modified_files %}
+                <li class="list-group-item">{{ file }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2 class="mt-5">Ramas Actuales</h2>
+        <p><strong>Rama Actual:</strong> {{ current_branch }}</p>
+        <ul class="list-group">
+            {% for branch in branches %}
+                <li class="list-group-item">{{ branch }}</li>
+            {% endfor %}
+        </ul>
+
+        <form method="POST" class="mt-4">
+            <div class="mb-3">
+                <label for="commit_type" class="form-label">Tipo de Commit</label>
+                <select name="commit_type" id="commit_type" class="form-select">
+                    <option value="feat">feat: Nueva funcionalidad</option>
+                    <option value="fix">fix: Corrección de bug</option>
+                    <option value="docs">docs: Documentación</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Descripción del Commit</label>
+                <input type="text" name="description" id="description" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="branch_name" class="form-label">Nombre de la Nueva Rama</label>
+                <input type="text" name="branch_name" id="branch_name" class="form-control">
+            </div>
+
+            <button type="submit" name="new_branch" class="btn btn-success">Crear y Cambiar a Nueva Rama</button>
+            <button type="submit" name="checkout_branch" class="btn btn-primary">Cambiar de Rama</button>
+        </form>
+
+        <a href="{{ url_for('history') }}" class="btn btn-secondary mt-4">Ver Historial de Commits</a>
+    </div>
+</body>
+</html>
