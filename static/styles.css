@@ -1,0 +1,23 @@
+body {
+    background-color: #f8f9fa;
+}
+.section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.section-header {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+.section-header span {
+    color: #6c757d;
+}
+.form-label {
+    font-weight: 600;
+}
+.btn-primary, .btn-success {
+    margin-right: 10px;
+}
