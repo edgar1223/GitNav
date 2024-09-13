@@ -1,37 +1,16 @@
-<!-- templates/index.html -->
+<!-- templates/commit.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Git Management</title>
+    <title>Git Commit</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
-        <!-- Menú de Navegación -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-            <a class="navbar-brand" href="#">GitNav</a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('index') }}">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('create_branch') }}">Crear Rama</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('history') }}">Historial</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('sync_repo') }}">Sincronizar</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <!-- Formulario de Commit -->
         <h2 class="section-header"><span class="text-primary">📄</span> Archivos Modificados</h2>
         <form method="POST">
             <ul class="list-group">

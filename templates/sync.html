@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="section">
+    <h2>Sincronización del Repositorio</h2>
+    <form method="POST" action="/sync">
+        <div class="mb-3">
+            <label for="sync_option" class="form-label">Sincronizar Repositorio</label>
+            <select name="sync_option" id="sync_option" class="form-select" onchange="handleSyncOptionChange()">
+                <option value="current_branch">Hacer pull en la rama actual</option>
+                <option value="switch_branch">Cambiar de rama</option>
+                <option value="new_branch">Crear nueva rama</option>
+            </select>
+        </div>
+
+        <div id="branch_selector" class="mb-3" style="display: none;">
+            <label for="branch">Seleccionar rama:</label>
+            <select name="branch" id="branch" class="form-select">
+                {% for branch in branches %}
+                    <option value="{{ branch }}">{{ branch }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div id="branch_name_input" class="mb-3" style="display: none;">
+            <label for="branch_name" class="form-label">Nombre de la nueva rama:</label>
+            <input type="text" id="branch_name" name="branch_name" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Sincronizar</button>
+    </form>
+</div>
+
+<script>
+    function handleSyncOptionChange() {
+        let selectedOption = document.getElementById("sync_option").value;
+        document.getElementById("branch_name_input").style.display = selectedOption === "new_branch" ? "block" : "none";
+        document.getElementById("branch_selector").style.display = selectedOption === "switch_branch" ? "block" : "none";
+    }
+</script>
+{% endblock %}

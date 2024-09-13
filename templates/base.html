@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitNav</title>
+    <link href="{{ url_for('static', filename='menu.css') }}" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <!-- Menú de navegación común -->
+        <ul>
+            <li><a href="{{ url_for('index') }}">Hacer Commit</a></li>
+            <li><a href="{{ url_for('create_branch') }}">Crear Rama</a></li>
+            <li><a href="{{ url_for('history') }}">Historial de Commits</a></li>
+            <li><a href="{{ url_for('sync_repo') }}">Sincronizar</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        {% block content %}
+        <!-- Contenido específico de cada vista -->
+        {% endblock %}
+    </div>
+</body>
+</html>
